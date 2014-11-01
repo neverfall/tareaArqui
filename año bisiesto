@@ -1,0 +1,52 @@
+%include "io.mac"
+
+.DATA
+input_prompt db "Ingrese un año: ",0
+respuesta_V db "¡El año es bisiesto!",0
+respuesta_F db "¡El año no bisiesto!",0
+
+.CODE
+	.STARTUP
+	PutStr input_prompt
+	GetLInt EBX ; captura el año
+
+	xor EDX, EDX ; limpia el DX
+	mov EAX, EBX ; mueve a AX el año
+	mov ECX, 4 ; mueve a CX el 4
+
+	div ECX ; divide el contenido de AX entre CX
+
+	cmp EDX,0 ; compara DX (residuo) con cero
+	jne responder ; si no son iguales responde
+
+pr_validacion:
+	xor EDX, EDX ; limpia DX
+	mov EAX, EBX ; mueve a AX el año
+	mov ECX, 100 ; mueve a CX el 100
+
+	div ECX ; divide el contenido de AX entre CX
+
+	cmp EDX, 0 ; compara DX (residuo) con cero
+	je sg_validacion ; si son iguales hace la segunda validación
+    	PutStr respuesta_V ; imprime la respuesta Verdadera
+    	jmp done
+
+sg_validacion:
+	xor EDX, EDX ; limpia DX
+	mov EAX, EBX ; mueve a AX el año
+	mov ECX, 400 ; mueve a CX el 400
+
+	div ECX ; divide el contenido de AX entre CX
+
+	cmp EDX, 0 ; compara DX (residuo) con cero
+	jne responder ; si no son iguales responde
+	PutStr respuesta_V ; imprime la respuesta
+	jmp done ; sale del programa
+
+responder:
+	PutStr respuesta_F ; imprime la respuesta Falsa
+	jmp done ; sale del programa
+
+done:	
+	 nwln
+	.EXIT
