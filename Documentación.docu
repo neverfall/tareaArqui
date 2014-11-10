@@ -39,12 +39,18 @@ El diseño de cada letra puede cambiar, pero cada letra debe ser formada por las
 
 
 IMPLEMENTACIÓN
-El programa primero imprime la peticion de fecha, luego se lee lo ingresado por el usuario y es guardado en un buffer, despues entra en un ciclo que divide el buffer en el dia el mes y el año guardandolo en su respectivo buffer.Hace un ATOI para hacer los datos manejables
-A partir de ahi entra a comprobar si el año es bisiesto *aqui lo que ud hizo :D* por imprimir si el año es bisiesto o no empieza el ciclo de Zeller. Primero se preparan los meses si es enero o febrero se deben sumar 12 meses y restar un año, luego se toman los ultimos 2 digitos del año y los primeros.
-Luego se aplica la formula "h=(q+⌊((m+1)/10)2610⌋+K+⌊K/4⌋+5−J)mod7, y segun el resultado se determina el dia que se va a imprimir en pantalla
+Inicialmente el programa le solicita al usuario que ingrese una fecha, los datos ingresados son guardados en un buffer. Posteriormente, a través de un ciclo se divide el buffer en el dia, el mes y el año, guardando cada parte de la fecha en un buffer distinto. Para que los datos sean manejables se implementa un ATOI.
+A partir de ahi, se realiza la comprobación de que el año sea bisiesto. Para esto simplemente se realizan tres validaciones, que consisten en divisiones normales, de las que únicamente interesa su resultado en el registro DX. Básicamente, este segmento del programa lo que hace es guardar el año en el registro BX, una vez hecho esto se divide el contenido del registro entre 4 y si el residuo (DX) es cero realiza la primera validación (en procedimiento sería la segunda).
+La primera validación es igualmente una división que busca que el residuo sea cero para pasar a la segunda, en la segunda validación se sigue el mismo principio. Todas las validaciones tienen ligado un caso que las lleva a la etiqueta de responder que el año es o no bisiesto. 
+Una vez hecho esto, lo siguiente es llevar acabo Algoritmo de Zeller. Primeramente, los meses deben ser congruentes con lo planteado en ese algoritmo, es decir, si es enero o febrero se deben sumar 12 meses y restar un año, luego se toman los ultimos 2 digitos del año y los primeros.
+Finalmente, se aplica la fórmula indicada en la introducción de este documento, y según el resultado de la misma se determina el dia que se va a imprimir en pantalla.
 
 CONCLUSIONES
-El manejo de datos es sumamente importante y puede ser un poco complicado asegurar que los datos estan correctos, al no poder verificar el contenido de los registros o buffers se vuelve sumamente complicado detectar un problema, para las divisiones hay que tener cuidado de que registros se usan y que contienen los mismos.
+ - El manejo de datos es sumamente importante y puede ser un poco complicado asegurar que los datos estan correctos, al no poder verificar el contenido de los registros o buffers se vuelve difícil detectar un problema.
+ - A la hora de realizar divisiones, es importante saber lo que indica cada registro.
+ - El uso de librerías como "io.mac" permiten desarrollar un código más compacto.
+ - 
+ -
 
 REFERENCIAS 
 
