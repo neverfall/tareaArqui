@@ -39,9 +39,12 @@ El diseño de cada letra puede cambiar, pero cada letra debe ser formada por las
 
 
 IMPLEMENTACIÓN
-
+El programa primero imprime la peticion de fecha, luego se lee lo ingresado por el usuario y es guardado en un buffer, despues entra en un ciclo que divide el buffer en el dia el mes y el año guardandolo en su respectivo buffer.Hace un ATOI para hacer los datos manejables
+A partir de ahi entra a comprobar si el año es bisiesto *aqui lo que ud hizo :D* por imprimir si el año es bisiesto o no empieza el ciclo de Zeller. Primero se preparan los meses si es enero o febrero se deben sumar 12 meses y restar un año, luego se toman los ultimos 2 digitos del año y los primeros.
+Luego se aplica la formula "h=(q+⌊((m+1)/10)2610⌋+K+⌊K/4⌋+5−J)mod7, y segun el resultado se determina el dia que se va a imprimir en pantalla
 
 CONCLUSIONES
+El manejo de datos es sumamente importante y puede ser un poco complicado asegurar que los datos estan correctos, al no poder verificar el contenido de los registros o buffers se vuelve sumamente complicado detectar un problema, para las divisiones hay que tener cuidado de que registros se usan y que contienen los mismos.
 
 REFERENCIAS 
 
