@@ -49,7 +49,7 @@ CONCLUSIONES
  - El manejo de datos es sumamente importante y puede ser un poco complicado asegurar que los datos estan correctos, al no poder verificar el contenido de los registros o buffers se vuelve difícil detectar un problema.
  - A la hora de realizar divisiones, es importante saber lo que indica cada registro.
  - El uso de librerías como "io.mac" permiten desarrollar un código más compacto.
- - 
+ - Imprimir letra por letra es complicado en nasm debido a la poca documentacion al respecto y al uso de librerias externas para el uso de DOS para utilizar la interrupcion 13h
  -
 
 REFERENCIAS 
