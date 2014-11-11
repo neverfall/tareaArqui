@@ -1,8 +1,4 @@
-;Lucy Chavez
-;Carlos Chacón
-;Instituto Tecnológico de Costa Rica, San José
-;Escuela de Ingeniería en Computación
-;IC-3101: Arquitectura de Computadores
+
 
 ;~#######################################MACROS############################################################
 %macro Escribir 2 
@@ -323,6 +319,11 @@ prValidacion:
 	 mov     ecx, respuesta_V
          mov     edx, TextoV
          Escribir ecx, edx
+         xor eax, eax    ;eax mantiene el mes
+          xor ebx, ebx
+          mov eax,[bufAux]
+          mov ebx, 01
+          mov [bufAux],ebx
          pop edx
          pop ecx
     	jmp preparar
@@ -341,11 +342,7 @@ sgValidacion:
         Escribir ecx, edx
          pop edx
          pop ecx
-         xor eax, eax    ;eax mantiene el mes
-          xor ebx, ebx
-          mov eax,[bufAux]
-          mov ebx, 01
-          mov [bufAux],ebx
+         
          
 	jmp preparar ; sale del programa
 
@@ -480,7 +477,7 @@ zeller:         ;el algoritmo que calcula el dia de la semana
        je comparacion
        jmp comparacionNo
 comparacion:     ;si es bisiesto usa este codigo
-          
+   
      cmp eax, 0 
      je sabado
      cmp eax, 1 
@@ -575,6 +572,3 @@ Exit:
     mov     eax, 1
     xor     ebx, ebx
     int     80H
-
-
-         
